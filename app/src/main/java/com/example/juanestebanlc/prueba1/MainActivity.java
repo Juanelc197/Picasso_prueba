@@ -10,6 +10,8 @@ import com.squareup.picasso.Target;
 
 public class MainActivity extends AppCompatActivity {
 
+    ListView lv;
+    Adapter adapter;
 
 
     @Override
@@ -17,17 +19,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        lv = (ListView) findViewById(R.id.am_iv_listview);
+        adapter = new Adapter(this, SomCollection.getSom());
 
-        ImageView imagenIv = (ImageView) findViewById(R.id.am_iv_imagen);
-
-
-
-        Picasso.with(this)
-                .load("http://orig05.deviantart.net/dfb0/f/2017/045/5/3/170212_cupcake_sombra_by_umigraphics-daz3wyf.jpg")
-                .error(R.mipmap.ic_launcher)
-                .fit()
-                .centerInside()
-                .into(imagenIv);
+        lv.setAdapter(adapter);
 
     }
 }
