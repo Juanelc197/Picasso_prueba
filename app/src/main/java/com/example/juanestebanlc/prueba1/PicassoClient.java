@@ -16,6 +16,7 @@ public class PicassoClient {
         if(url != null && url.length()>0) {
             Picasso.with(c)
                     .load(url)
+                    .transform(new CropSquareTransformation())
                     .resize(500, 500)
                     .centerCrop()
                     .placeholder(R.mipmap.ic_launcher)
